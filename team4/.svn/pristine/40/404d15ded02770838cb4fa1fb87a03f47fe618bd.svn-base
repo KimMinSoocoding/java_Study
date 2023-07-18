@@ -1,0 +1,37 @@
+package service;
+
+import java.util.List;
+
+import vo.Member;
+import vo.ProductVO;
+
+public interface MemberService {
+	/**@author 박현민
+	 * 1. 회원 찾기 : 기존에 등록되어 있는 회원과 일치여부
+	 * 
+	 */
+	Member findMember(String tel);
+
+	/**
+	 * 2. 중복된 회원 없으면 회원 등록/ 있으면 회원정보와 쿠폰개수 출력
+	 */
+	void register();
+	
+	/**
+	 * 3. 쿠폰 사용(12장 이상 보유중일 때)
+	 */
+	boolean useCoupon();
+	
+	/**
+	 * 4. 쿠폰 적립(잔당 1장씩)
+	 */
+	void addCoupon();
+
+
+	List<Member> getMemberList();
+	
+	Member getLoginUser();
+
+	void setCoupon(int i);
+	
+}

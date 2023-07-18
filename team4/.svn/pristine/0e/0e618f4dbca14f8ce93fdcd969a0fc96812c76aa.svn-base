@@ -1,0 +1,47 @@
+package service;
+
+public class AdministratorServiceImpl implements AdministratorService {
+
+	@Override
+	public void findBySal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findByDetSal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void register() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findBySto() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findByDetSto() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void StoOrd() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

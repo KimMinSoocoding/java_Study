@@ -1,0 +1,173 @@
+package vo;
+//5. 관리자 아이디, 비밀번호, 이름 / 가입일시는 특별히 넣지 않겠다 이유는 프로그램
+// 생성과 동시에 같이 가지고 생성되는것이 관리자 이기 때문에,
+public class Administrator {
+	
+	
+	/**
+	 * @함준혁
+	 * 관리자 아이디
+	 */
+	private String id;
+	/**
+	 * @함준혁
+	 * 관리자 비밀번호
+	 */
+	private int pw;
+	/**
+	 * @함준혁
+	 * 관리자 이름
+	 */
+	private String name;
+	/**
+	 * @함준혁
+	 * 총매출 
+	 */
+	private long sales;
+	/**
+	 * @함준혁
+	 * 커피매출
+	 */
+	private long cofsal;
+	/**
+	 * @함준혁
+	 * 티매출
+	 */
+	private long teasal;
+	/**
+	 * @함준혁
+	 * 라떼매출
+	 */
+	private long latsal;
+	/**
+	 * @함준혁
+	 * 디저트 매출
+	 */
+	private long dessal;
+	/**
+	 * @함준혁
+	 * 그외매출
+	 */
+	private long etcsal;
+	
+	
+	/**
+	 * @함준혁
+	 * 기본생성자
+	 */
+	public Administrator() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Administrator(String id, int pw, String name, long sales, long cofsal, long teasal, long latsal, long dessal,
+			long etcsal) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.sales = sales;
+		this.cofsal = cofsal;
+		this.teasal = teasal;
+		this.latsal = latsal;
+		this.dessal = dessal;
+		this.etcsal = etcsal;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public int getPw() {
+		return pw;
+	}
+
+
+	public void setPw(int pw) {
+		this.pw = pw;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public long getSales() {
+		return sales;
+	}
+
+
+	public void setSales(long sales) {
+		this.sales = sales;
+	}
+
+
+	public long getCofsal() {
+		return cofsal;
+	}
+
+
+	public void setCofsal(long cofsal) {
+		this.cofsal = cofsal;
+	}
+
+
+	public long getTeasal() {
+		return teasal;
+	}
+
+
+	public void setTeasal(long teasal) {
+		this.teasal = teasal;
+	}
+
+
+	public long getLatsal() {
+		return latsal;
+	}
+
+
+	public void setLatsal(long latsal) {
+		this.latsal = latsal;
+	}
+
+
+	public long getDessal() {
+		return dessal;
+	}
+
+
+	public void setDessal(long dessal) {
+		this.dessal = dessal;
+	}
+
+
+	public long getEtcsal() {
+		return etcsal;
+	}
+
+
+	public void setEtcsal(long etcsal) {
+		this.etcsal = etcsal;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", pw=" + pw + ", name=" + name + ", sales=" + sales + ", cofsal=" + cofsal
+				+ ", teasal=" + teasal + ", latsal=" + latsal + ", dessal=" + dessal + ", etcsal=" + etcsal + "]";
+	}
+}
+	

@@ -1,0 +1,102 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+import util.Utils;
+import vo.Member;
+
+public class MemberServiceImpl implements MemberService {
+	
+	private static MemberService memberService = new MemberServiceImpl();
+	
+	public static MemberService getInstance() {
+		return memberService;
+	}
+	
+	OrderService orderService = OrderServiceImpl.getInstance();
+			
+	private MemberServiceImpl() {}
+
+	List<Member> memberList = new ArrayList<Member>();
+	
+
+	public List<Member> getMemberList() {
+		return memberList;
+	}
+
+
+	public void setMemberList(List<Member> memberList) {
+		this.memberList = memberList;
+	}
+	
+
+
+
+	{ // 멤버 더미데이터 생성
+	memberList.add(new Member(1, "010-9107-0376"));
+	memberList.add(new Member(2, "010-9107-0377"));
+	}
+	
+	
+
+	@Override
+	public void register() {
+		String tel = Utils.nextLine("전화번호를 입력하세요 >");
+		Member member = findMember(tel);
+		if(member.getTel().equals(tel)) {
+			System.out.println(tel + "님이 보유중인 쿠폰은 " + member.getCoupon() + "장 입니다.");
+		} else {
+			System.out.println("회원 등록이 완료되었습니다.");
+			memberList.add(new Member(0, tel));
+		}
+	}
+	
+	
+	
+
+	@Override
+	public boolean useCoupon(int coupon) {
+		if(coupon < 12) {
+            System.out.println("쿠폰은 12장 이상일 때부터 사용이 가능합니다.");
+            return false;
+        }
+        else {
+            System.out.println("쿠폰을 사용하시겠습니까?");
+            int input = Utils.nextInt("1.예     2.아니오");
+
+            switch(input) {
+            case 1:
+                coupon -= 12;
+                System.out.println("쿠폰이 12장 차감되어 현재 보유중인 쿠폰은 " + coupon + "장 입니다.");
+                return true;
+            default:
+                return false;
+            }
+        }
+	}
+
+	@Override
+	public void addCoupon() {
+		int cnt = 0;
+		for(int i = 0; i <= orderService.countBeverage(); i++) {
+			cnt++;
+		}
+	}
+
+	@Override
+	public Member findMember(String tel) {
+		/**
+		 * vo Member에 저장되어 있는 회원인지 확인
+		 */
+		Member member = null;
+		for (int i = 0; i < memberList.size(); i++) {
+			if (memberList.get(i).getTel().equals(tel)) {
+				member = memberList.get(i); 
+				break;
+			}
+		}
+		return member;
+	}
+}
+
+

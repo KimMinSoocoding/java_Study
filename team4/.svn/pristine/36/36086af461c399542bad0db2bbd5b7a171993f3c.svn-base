@@ -1,0 +1,18 @@
+package service;
+
+import java.util.List;
+
+import vo.Member;
+
+public interface MemberService {
+	/**
+	 * 1. 회원 중복 확인 - 회원 정보를 입력받고 중복값이 없으면 회원등록,
+	 * 중복값이 있으면 등록된 회원 정보를 불러온다. 
+	 * 
+	 */
+	void findMember(String tel);
+	
+	List<Member> getMemberList();
+	
+	
+}

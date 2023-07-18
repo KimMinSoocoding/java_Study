@@ -1,0 +1,21 @@
+package team4;
+
+public interface ProductService {
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * 
+	 * 
+	 * 음료 카테고리 소분류 
+	 * 
+	 */
+	
+	
+	void coffeeCategory();
+	void teaCategory();
+	void beregeCategory();
+	void dessertCategory();
+	void etcCategory();
+	
+	
+}

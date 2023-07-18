@@ -1,0 +1,81 @@
+package main;
+
+import service.Cart;
+import service.ProductServiceImpl;
+import util.RangeException;
+
+
+public class KioskMain {
+	
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * ProductServiceImpl 인스턴스생성 
+	 */
+	 static	boolean run = true;
+	static ProductServiceImpl pro = new ProductServiceImpl();
+	static Cart cart = new Cart();
+	public static void main(String[] args) {
+		
+		/**
+		 * @author 김민수 
+		 * @since 23/02/06
+		 * 입력값 범위 유효성검사 pro.checkRange 
+		 */
+		while(run) {
+			try {
+				run();
+			} catch (NumberFormatException e) {
+				System.out.println("적절한 숫자를 입력하세요");
+			} catch (RangeException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	static void run() {
+		//1. 커피   2. 차   3. Beverage   4. Dessert   -1. 관리자
+		int input = pro.checkRange(util.Utils.nextInt("메뉴 선택 > 1.커피  2.차  3.Beverage  4.Dessert  5.Etc  6.장바구니  7.종료"),1,6);
+		switch(input) {
+		case -1:
+			//관리자 페이지
+			System.out.println("관리자페이지입니다");
+			break;
+		case 1:
+			System.out.println("== * 커피 Black & White * ==");
+			pro.drinkCategory(100,130);
+			cart.proAdd();
+			break;
+		case 2:
+			System.out.println("== * 차 Tea * ==");
+			pro.drinkCategory(200,230);
+			cart.proAdd();
+			break;
+		case 3:
+			System.out.println("== * 라떼 & 버블 * ==");
+			pro.drinkCategory(10,30);
+			cart.proAdd();
+			break;
+		case 4:
+			System.out.println("== * 브레드 & 쿠키 & 샌드위치 * ==");
+			pro.drinkCategory(300,310);
+			cart.proAdd();
+			break;
+		case 5:
+			System.out.println("== * 추가메뉴 * ==");
+			pro.moreAddCategort(1,8);
+			cart.moreProAdd();
+			break;
+		case 6:
+			cart.proList();
+			break;
+		case 7:
+			
+			break;
+//		default:
+//			break;
+			
+		}
+	
+	}
+
+}

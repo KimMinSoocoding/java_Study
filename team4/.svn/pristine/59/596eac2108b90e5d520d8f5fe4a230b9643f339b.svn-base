@@ -1,0 +1,11 @@
+package team4;
+
+
+
+public class Board {
+	{
+		System.out.println("박현민");
+		System.out.println("함준혁");
+		System.out.println("이지윤");
+	}
+}

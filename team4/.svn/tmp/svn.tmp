@@ -1,0 +1,30 @@
+package team4; 
+
+public class Administratorimpl implements Administrator{
+	/**구현해야할 목록
+	매출
+	상품등록
+	재고관리
+	**/
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void sales() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void stockmanagement() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

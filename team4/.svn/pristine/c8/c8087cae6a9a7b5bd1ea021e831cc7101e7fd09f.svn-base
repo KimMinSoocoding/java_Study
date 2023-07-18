@@ -1,0 +1,114 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+import util.Utils;
+import vo.Member;
+/**
+ * @author 박현민
+ *
+ */
+public class MemberServiceImpl implements MemberService {
+	
+	private static MemberService memberService = new MemberServiceImpl();
+	
+	public static MemberService getInstance() {
+		return memberService;
+	}
+			
+	private MemberServiceImpl() {}
+
+	List<Member> memberList = new ArrayList<Member>();
+	
+	public List<Member> getMemberList() {
+		return memberList;
+	}
+
+	{ // 멤버 더미데이터 생성
+	memberList.add(new Member(13, "010-9107-0376"));
+	memberList.add(new Member(2, "010-9107-0377"));
+	}
+	private Member loginUser;
+	
+	public Member getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(Member loginUser) {
+		this.loginUser = loginUser;
+	}
+
+	@Override
+	public void register() {
+		//전화번호 유효성 검증 필요
+		String tel = Utils.nextLine("전화번호를 입력하세요 (입력형식:000-0000-0000) >");
+		Member member = findMember(tel);
+		/**
+		 * findMember에서 찾은 값이 null값이면 회원 등록
+		 * null값이 아니면 회원 번호와 쿠폰 출력
+		 */
+		if(member == null) {
+			System.out.println("회원 등록이 완료되었습니다.");
+			memberList.add(new Member(0, tel));
+		} else {
+			System.out.println(tel + "님이 보유중인 쿠폰은 " + member.getCoupon() + "장 입니다.");
+		}
+		setLoginUser(findMember(tel));
+	}
+
+	@Override
+	public void addCoupon() {
+		/**
+		 * 결제가 완료되면 총 주문한 음료 수만큼 쿠폰 적립
+		 */
+		OrderService orderService = OrderServiceImpl.getInstance();
+		int cnt = 0;
+		for(int i = 0; i <= orderService.countBeverage(); i++) {
+			cnt++;
+		}
+		loginUser.setCoupon(cnt);
+		System.out.println("쿠폰이 " + cnt + "장 적립되었습니다.");
+	}
+
+	@Override
+	public Member findMember(String tel) {
+		/**
+		 * vo Member에 저장되어 있는 회원인지 확인
+		 */
+		Member member = null;
+		for (int i = 0; i < memberList.size(); i++) {
+			if (memberList.get(i).getTel().equals(tel)) {
+				member = memberList.get(i); 
+				break;
+			}
+		}
+		return member;
+	}
+
+	@Override
+	public boolean useCoupon() {
+		/**
+		 * 회원에게 쿠폰 사용여부를 묻고 사용을 희망하면 보유중인 쿠폰에서 12개 차감
+		 */
+		ProductService productService = ProductServiceImpl.getInstance();
+		System.out.println("쿠폰을 사용하시겠습니까?");
+		int input = productService.checkRange(Utils.nextInt("1.예      2.아니오"), 1, 2);
+			
+		switch(input) {
+		case 1:
+//			loginUser.setCoupon(loginUser.getCoupon()-12);
+			System.out.println("쿠폰이 12장 차감되었습니다. 현재 보유중인 쿠폰은 " + loginUser.getCoupon() + "장 입니다.");
+			return true;
+		
+		default:
+			return false;
+		
+		}
+	}
+
+	@Override
+	public void setCoupon(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+}	

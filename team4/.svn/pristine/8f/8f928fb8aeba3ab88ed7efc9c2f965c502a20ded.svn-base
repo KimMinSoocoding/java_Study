@@ -1,0 +1,17 @@
+package vo;
+
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * 
+ * @author
+ * 주문시 입력받은 멤버 정보(전화번호)를 리스트로 저장
+ *
+ */
+public class MemberList {
+	List<Member> members;
+
+}
+
+
+

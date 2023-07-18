@@ -1,0 +1,45 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vo.ProductVO;
+
+public class Cart {
+	ProductVO pro;
+	int count;
+	int sum;
+	
+	List<ProductServiceImpl> proCart = new ArrayList<ProductServiceImpl>();
+	
+	
+	public ProductVO getPro() {
+		return pro;
+	}
+	
+	public void setCount(int count) {
+		this.count=count;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
+	public void setSum(int sum) {
+		this.sum=sum;
+	}
+
+	public Cart(ProductVO pro, int count, int sum) {
+		super();
+		this.pro = pro;
+		this.count = count;
+		this.sum = sum;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [pro=" + pro + ", count=" + count + ", sum=" + sum + "]";
+	}
+	
+	
+}

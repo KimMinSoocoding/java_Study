@@ -1,0 +1,53 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vo.Member;
+
+public class MemberServiceImpl implements MemberService {
+	
+	private static MemberService memberService = new MemberServiceImpl();
+	
+	public static MemberService getInstance() {
+		return memberService;
+	}
+	
+	private MemberServiceImpl() {}
+
+	List<Member> memberList = new ArrayList<Member>();
+	
+	
+	@Override
+	public List<Member> getMemberList() {
+		return memberList;
+	}
+
+	public void setMemberList(List<Member> memberList) {
+		this.memberList = memberList;
+	}
+
+	{ // 멤버 더미데이터 생성
+	memberList.add(new Member(1, "010-9107-0376"));
+	memberList.add(new Member(2, "010-9107-0377"));
+	}
+	
+	@Override
+	public void findMember(String tel) {
+	/**
+	 * vo Member에 저장되어 있는 회원인지 확인하고 저장되어 있지 않으면
+	 * 멤버리스트에 추가시킴	
+	 */
+		
+	Member member = null;
+		for (int i = 0; i < memberList.size(); i++) {
+			if (memberList.get(i).getTel() != tel) {
+				System.out.println("가입이 완료되었습니다.");
+				memberList.add(new Member(1, tel));
+				break;
+			}
+		}
+	}
+}
+
+

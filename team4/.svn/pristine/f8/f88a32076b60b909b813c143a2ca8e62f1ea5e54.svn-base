@@ -1,0 +1,10 @@
+package vo;
+
+public class Administrator {
+	private int pw = 1234;
+
+	public int getPw() {
+		return pw;
+	}
+	
+}	

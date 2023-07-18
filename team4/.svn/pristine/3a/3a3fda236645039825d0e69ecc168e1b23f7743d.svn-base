@@ -1,0 +1,13 @@
+package service;
+
+public interface Coupon {
+	/**
+	 * 주문시 주문 수량만큼 쿠폰 1개씩 적립(해당 회원)
+	 * 12개 적립시 쿠폰 사용 가능
+	 * 쿠폰 사용시 주문금액에서 -2,000원 차감/ 적립된 쿠폰 12장 차감
+	 */
+	void addCoupon(); // 쿠폰 적립
+	
+	void useCoupon(); // 쿠폰 사용
+	
+}

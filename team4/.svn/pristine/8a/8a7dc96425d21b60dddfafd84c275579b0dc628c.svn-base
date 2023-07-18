@@ -1,0 +1,46 @@
+package service;
+
+public interface OrderService {
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06
+	 * 
+	 * 전화번호를 입력받는 함수
+	 */
+	void getTel();
+	
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06 
+	 * 
+	 * 현금을 입력받는 함수
+	 */
+	void getCash();
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/07
+	 * 
+	 * 현금에서 상품 합계 금액 차감 함수
+	 */
+	void payProduct();
+	
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06
+	 * 
+	 * 구매한 상품에 따른 재고 차감 함수
+	 */
+	void minusStock();
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/07
+	 * 
+	 * 쿠폰 개수 증가 함수
+	 */
+	void increaseCoupon();
+	
+}

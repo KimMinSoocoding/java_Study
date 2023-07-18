@@ -1,0 +1,110 @@
+package service;
+
+import main.KioskMain;
+import util.Utils;
+
+public class AdministratorServiceImpl implements AdministratorService {
+	static AdministratorServiceImpl as = new AdministratorServiceImpl();
+	static KioskMain km = new KioskMain();
+
+	public static void admin() {
+		int input = as.checkRange(Utils.nextInt("관리자페이지입니다. 이용하실 항목의 번호를 입력해주세요\n1.매출조회 2.제품등록/삭제 3.재고조회 4.재고주문 5.이전"),
+				1, 4);
+		switch (input) {
+		case 1:
+			as.findBySal();
+			break;
+		case 2:
+			as.register();
+			break;
+		case 3:
+			as.findBySto();
+			break;
+		case 4:
+			as.StoOrd();
+			break;
+		case 5:
+			km.run();
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void findBySal() {
+		System.out.println("매출조회메서드입니다.");
+		int input = as.checkRange(Utils.nextInt("상세매출을 조회하시려면 1번, 이전으로 돌아가시려면 2번을 입력해주세요"), 0, 100);
+		switch (input) {
+		case 1:
+			as.findByDetSal();
+			break;
+		case 2:
+			as.admin();
+		default:
+			break;
+		}
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void findByDetSal() {
+		// TODO Auto-generated method stub
+		System.out.println("상세매출조회메서드입니다.");
+	}
+
+	@Override
+	public void register() {
+		// TODO Auto-generated method stub
+		System.out.println("제품등록/삭제메서드입니다.");
+		int input = as.checkRange(Utils.nextInt("제품을등록하시려면 1번, 삭제하시려면 2번을 입력해주세요"), 0, 100);
+		switch (input) {
+		case 1:
+			System.out.println("제품을등록하는메서드입니다.");
+			//여기는 제품을 등록하는 장소
+			break;
+		case 2:
+			as.remove();
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void remove() {
+		System.out.println("제품을 삭제하는메서드입니다.");
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void findBySto() {
+		System.out.println("재고를 조회하는 메서드입니다. 어떤 재고를 주문하시겠습니까?");
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void findByDetSto() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void StoOrd() {
+		System.out.println("재고를 주문하는 메서드입니다. 어떤 재고를 주문하시겠습니까?");
+		// TODO Auto-generated method stub
+
+	}
+
+	public int checkRange(int num) {
+		return checkRange(num, 0, 100);
+	}
+
+	public int checkRange(int num, int start, int end) {
+		if (num < start || num > end) {
+			throw new util.RangeException(start, end);
+		}
+		return num;
+	}
+}

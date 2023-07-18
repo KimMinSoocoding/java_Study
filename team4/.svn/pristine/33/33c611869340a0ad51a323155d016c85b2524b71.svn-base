@@ -1,0 +1,39 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vo.ProductVO;
+
+// 주문코드를 입력받는다 : 주문코드는 어디에 있는가? 음료List에 있다 
+// 입력받은 음료의 proNum은 findby에서 찾아 add 한다 return coffeePro
+// add 될때마다 count ++ 
+// 
+
+public class Cart extends ProductServiceImpl{
+	
+	List<ProductVO> cart = new ArrayList<ProductVO>();
+	ProductServiceImpl products = new ProductServiceImpl();
+	private int cnt; // 현재 담은 음료 갯수
+	
+	
+	// 장바구니 추가 
+	public void proAdd () {
+		if(cart.add(products.coffeefindBy())) {
+			System.out.println(cart.toString() + " 담기완료 ");
+			cnt ++;
+			System.out.println("총 : "+cnt+" 잔 ");
+		}
+	}
+	
+	// 장바구니 목록(잔수합계까지) + 금액합계 보여주기
+//	public void proList() {
+//		for(int i=0; i<proAdd(); i++) {
+//			
+//		}
+//	}
+	
+	// 장바구니 수정 (개별삭제)
+	
+	
+}

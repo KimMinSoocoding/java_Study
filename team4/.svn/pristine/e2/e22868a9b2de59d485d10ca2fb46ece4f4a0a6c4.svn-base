@@ -1,0 +1,8 @@
+package vo;
+
+import java.util.List;
+
+public class Member{
+	List<Integer> coupon;
+	String tel;
+}

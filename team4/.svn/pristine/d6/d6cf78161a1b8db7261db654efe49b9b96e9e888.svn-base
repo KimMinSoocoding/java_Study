@@ -1,0 +1,36 @@
+package service;
+
+public class OrderServiceImpl implements OrderService {
+
+	@Override
+	public void getTel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getCash() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void payProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void minusStock() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void increaseCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

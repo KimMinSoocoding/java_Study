@@ -1,0 +1,72 @@
+package main;
+
+import java.util.List;
+
+import service.AdministratorService;
+import service.AdministratorServiceImpl;
+import service.Cart;
+import service.OrderService;
+import service.OrderServiceImpl;
+import service.ProductService;
+import service.ProductServiceImpl;
+import util.RangeException;
+import util.Utils;
+import vo.ProductVO;
+
+
+public class KioskMain {
+
+	 static	boolean run = true;
+
+	
+	
+	public static void main(String[] args) {
+		
+		while(run) {
+			try {
+				run();
+			} catch (NumberFormatException e) {
+				System.out.println("적절한 숫자를 입력하세요");
+			} catch (RangeException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	
+	public static void run() {
+		ProductService productService = ProductServiceImpl.getInstance();
+		AdministratorService administratorService = AdministratorServiceImpl.getInstance();
+		Cart cart = Cart.getInstance();
+		OrderService orderService = OrderServiceImpl.getInstance();
+		
+		
+		//1. 커피   2. 차   3. Beverage   4. Dessert   -1. 관리자
+		int input = Utils.nextInt("메뉴 선택 > 1.커피  2.차  3.Beverage  4.Dessert  5.Etc  6.장바구니  7.종료");
+		
+		switch(input) {
+		case 0:
+			administratorService.isAdmin();
+			break;
+			
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			productService.showCategory(input);
+			cart.on = false;
+			cart.addProduct();
+			break;
+			
+		case 6:
+			cart.proList(); 
+			break;
+		case 7:
+			run = false;
+		default:
+			break;
+		}
+	
+	}
+
+}

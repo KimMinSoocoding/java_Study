@@ -1,0 +1,30 @@
+package service;
+
+import vo.Member;
+
+public class CouponImpl implements Coupon{
+	
+	OrderServiceImpl os = new OrderServiceImpl();
+	
+	Member member = new Member();
+	Cart cart = new Cart();
+	@Override
+	public void addCoupon() {
+		// 결제한 상품의 개수만큼 쿠폰 적립
+		int sum = 0;
+		for(int i = 0; i < cart.getCnt(); i++) {
+			sum += i;
+		}
+	}
+	@Override
+	public int useCoupon(){//int orderPrice) {
+		/**
+		 * 회원이 쿠폰을 12개 이상 보유하고 있어야 사용 가능
+		 * 사용시 총 결제할 금액에서 2천원 차감
+		 */
+		if(member.getCoupon() >= 12) {
+			// orderprice - 2000
+		}
+		return 0; //orderprice;
+	}
+}

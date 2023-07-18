@@ -1,0 +1,47 @@
+package service;
+
+import util.Utils;
+import vo.Member;
+
+
+public class OrderServiceImpl implements OrderService {
+	int cash = 0;
+	
+	Member member = new Member();
+
+
+	@Override
+	public void getTel() {
+		// TODO Auto-generated method stub
+		member.setTel(Utils.nextLine("전화번호를 입력해주세요 > "));
+
+	}
+
+	@Override
+	public void getCash() {
+		// TODO Auto-generated method stub
+		cash = Utils.nextInt("현금을 입력해주세요 > ");
+		
+	}
+
+	@Override
+	public void payProduct() {
+		// TODO Auto-generated method stub
+//		현금 - 상품 합계
+		System.out.println("남은 금액은 " + cash + " 입니다.");
+	}
+
+	@Override
+	public void minusStock() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void increaseCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

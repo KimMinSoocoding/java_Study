@@ -1,0 +1,90 @@
+package vo;
+
+public class ProductVO {
+	private int proNum;
+	private String proName;
+	private int proPrice;
+<<<<<<< .mine
+	private int category;
+	
+||||||| .r72
+=======
+	private int proCategory;
+
+>>>>>>> .r96
+	public ProductVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+<<<<<<< .mine
+	public ProductVO(int proNum, String proName, int proPrice, int category) {
+||||||| .r72
+=======
+	public ProductVO(int proNum, String proName, int proPrice, int proCategory) {
+>>>>>>> .r96
+		super();
+		this.proNum = proNum;
+		this.proName = proName;
+		this.proPrice = proPrice;
+<<<<<<< .mine
+		this.category = category;
+||||||| .r72
+=======
+		this.proCategory = proCategory;
+>>>>>>> .r96
+	}
+
+
+	@Override
+	public String toString() {
+		return "ProductVO [proNum=" + proNum + ", proName=" + proName + ", proPrice=" + proPrice + ", proCategory="
+				+ proCategory + "]";
+	}
+
+	public int getProNum() {
+		return proNum;
+	}
+
+	public void setProNum(int proNum) {
+		this.proNum = proNum;
+	}
+
+	public String getProName() {
+		return proName;
+	}
+
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+
+	public int getProPrice() {
+		return proPrice;
+	}
+
+	public void setProPrice(int proPrice) {
+		this.proPrice = proPrice;
+	}
+<<<<<<< .mine
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+	
+	
+}
+||||||| .r72
+=======
+
+	public int getProCategory() {
+		return proCategory;
+	}
+
+	public void setProCategory(int proCategory) {
+		this.proCategory = proCategory;
+	}
+
+}>>>>>>> .r96

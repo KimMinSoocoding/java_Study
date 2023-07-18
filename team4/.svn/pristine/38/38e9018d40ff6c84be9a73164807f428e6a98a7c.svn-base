@@ -1,0 +1,19 @@
+package service;
+
+public class CouponImpl implements Coupon{
+	
+
+	
+	@Override
+	public void addCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void useCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

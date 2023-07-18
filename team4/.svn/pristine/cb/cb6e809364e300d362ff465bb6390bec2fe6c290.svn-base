@@ -1,0 +1,8 @@
+package team4;
+
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("team4");
+		System.out.println("함준혁2"); 
+	}
+}

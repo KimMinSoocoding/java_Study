@@ -1,0 +1,31 @@
+package team4;
+
+public class KioskMain {
+	public static void main(String[] args) {
+		//1. 커피   2. 차   3. Beverage   4. Dessert   -1. 관리자
+		int input = Utils.nextInt("메뉴를 선택해 주세요 > ");
+		switch(input) {
+		case -1:
+			//관리자 페이지
+			break;
+		case 1:
+			//커피 카테고리
+			break;
+		case 2:
+			//차 카테고리
+			break;
+		case 3:
+			//Beverage 카테고리
+			break;
+		case 4:
+			//Dessert 카테고리
+			break;
+			
+		default:
+			System.out.println("유효하지 않은 숫자입니다.");
+			
+		}
+	
+	}
+
+}

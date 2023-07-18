@@ -1,0 +1,21 @@
+package service;
+
+public interface ProductService {
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * 
+	 * 
+	 * 음료 카테고리 소분류 
+	 * 
+	 */
+	
+	// 음료 카테고리별 보여주기
+	void coffeeCategory();
+	void teaCategory();
+	void bereageCategory();
+	void dessertCategory();
+	void ectCategory();
+	
+	
+}

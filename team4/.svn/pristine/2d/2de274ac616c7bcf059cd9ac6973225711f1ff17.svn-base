@@ -1,0 +1,77 @@
+package main;
+
+import service.AdministratorServiceImpl;
+import service.Cart;
+import service.ProductServiceImpl;
+import util.RangeException;
+
+
+public class KioskMain {
+	
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * ProductServiceImpl 인스턴스생성 
+	 */
+	static AdministratorServiceImpl as = new AdministratorServiceImpl();
+	 static	boolean run = true;
+	static ProductServiceImpl pro = new ProductServiceImpl();
+	static Cart cart = new Cart();
+	public static void main(String[] args) {
+		
+		/**
+		 * @author 김민수 
+		 * @since 23/02/06
+		 * 입력값 범위 유효성검사 pro.checkRange 
+		 */
+		while(run) {
+			try {
+				run();
+			} catch (NumberFormatException e) {
+				System.out.println("적절한 숫자를 입력하세요");
+			} catch (RangeException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	public static void run() {
+		//1. 커피   2. 차   3. Beverage   4. Dessert   -1. 관리자
+		int input = pro.checkRange(util.Utils.nextInt("메뉴 선택 > \n 1.커피  2.차  3.Beverage  4.Dessert  5.Etc  6.장바구니  7.종료"),0,6);
+		switch(input) {
+		case 0:
+			//관리자 페이지
+			as.admin();
+			break;
+		case 1:
+			pro.drinkCategory(100,120);
+			cart.proAdd();
+			break;
+		case 2:
+			pro.drinkCategory(200,230);
+			cart.proAdd();
+			break;
+		case 3:
+			pro.drinkCategory(10,30);
+			cart.proAdd();
+			break;
+		case 4:
+			pro.drinkCategory(300,330);
+			cart.proAdd();
+			break;
+		case 5:
+			pro.moreAddCategort(1,9);
+			cart.moreProAdd();
+			break;
+		case 6:
+			cart.proList();
+			break;
+		case 7:
+			run = false;
+		default:
+			break;
+			
+		}
+	
+	}
+
+}

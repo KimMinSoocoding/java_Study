@@ -1,0 +1,65 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vo.ProductVO;
+
+// 주문코드를 입력받는다 : 주문코드는 어디에 있는가? 음료List에 있다 
+// 입력받은 음료의 proNum은 findby에서 찾아 add 한다 
+// add 될때마다 count ++ 
+// 
+
+<<<<<<< .mine
+public class Cart  {
+	
+||||||| .r56
+=======
+public class Cart{
+	List<ProductVO> productList = new ArrayList<ProductVO>();
+	//추가될 것? -> 커피
+>>>>>>> .r57
+	List<ProductVO> proAdd = new ArrayList<ProductVO>();
+	
+<<<<<<< .mine
+	ProductServiceImpl p = new ProductServiceImpl();
+	
+	public void temp(){
+			proAdd.add(p.findBy());
+			System.out.println("등록");
+		
+	}
+||||||| .r56
+=======
+	ProductServiceImpl p = new ProductServiceImpl();
+>>>>>>> .r57
+	// 장바구니 추가 
+	
+<<<<<<< .mine
+	// 장바구니 목록 
+||||||| .r56
+=======
+	{
+		productList.add(p.findBy());
+		System.out.println(productList);
+		
+	}
+>>>>>>> .r57
+	
+<<<<<<< .mine
+	// 장바구니 개별 삭제 
+	
+	// 장바구니 비우기 
+	
+||||||| .r56
+=======
+>>>>>>> .r57
+	// 장바구니 금액합계 
+	
+	// 장바구니 상품 갯수 
+	
+	// 장바구니 수정 
+	
+
+	
+}

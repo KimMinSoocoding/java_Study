@@ -1,0 +1,158 @@
+package service;
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import vo.ProductVO;
+
+
+public class ProductServiceImpl	implements ProductService {
+	
+	private static ProductService productserviceImpl = new ProductServiceImpl(); 
+	private ProductServiceImpl() {}
+	public static ProductService getInstance() {
+		return productserviceImpl;
+	}
+		
+	
+	private List<ProductVO> proCategory = new ArrayList<ProductVO>();
+
+	@Override
+	public List<ProductVO> getProCategory() {
+		return proCategory;
+	}
+	
+	@Override
+	public void setProCategory(ProductVO proCategory) {
+		this.proCategory.add(proCategory);
+	}
+
+	/**
+	 * 김민수 
+	 *  02/11 영속화작업 
+	 */
+	{
+		int tmp = 1;
+		// 커피 Blacks 1
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("product1.ser"))){
+			proCategory = (List<ProductVO>) ois.readObject();
+		}catch (FileNotFoundException e) {
+			
+			proCategory.add(new ProductVO(100, "Ice 아메리카노", 2000,tmp));
+			proCategory.add(new ProductVO(101, "Hot 아메리카노", 2000,tmp));
+			proCategory.add(new ProductVO(102, "콜드브루", 2200,tmp));
+			proCategory.add(new ProductVO(103, "아인슈페너", 3000,tmp));
+			
+			// 커피 White 
+			proCategory.add(new ProductVO(104, "Ice 카라멜 마끼야또", 3300,tmp));
+			proCategory.add(new ProductVO(105, "Hot 카라멜 마끼야또", 3300,tmp));
+			proCategory.add(new ProductVO(106, "Ice 바닐라 라떼", 3300,tmp));
+			proCategory.add(new ProductVO(107, "Hot 바닐라 라떼", 3300,tmp));
+			proCategory.add(new ProductVO(108, "Ice 카페모카", 3300,tmp));
+			proCategory.add(new ProductVO(109, "Hot 카페모카", 3300,tmp));
+			proCategory.add(new ProductVO(110, "Ice 연유라떼", 3500,tmp));
+			proCategory.add(new ProductVO(111, "Hot 연유라떼", 3500,tmp));
+			
+			tmp ++;
+			proCategory.add(new ProductVO(200, "Ice 자몽티", 3500,tmp));
+			proCategory.add(new ProductVO(201, "Hot 자몽티", 3500,tmp));
+			proCategory.add(new ProductVO(202, "Ice 레몬티", 3500,tmp));
+			proCategory.add(new ProductVO(203, "Hot 레몬티", 3500,tmp));
+			proCategory.add(new ProductVO(204, "Ice 녹차", 3000,tmp));
+			proCategory.add(new ProductVO(205, "Hot 녹차", 3000,tmp));
+			proCategory.add(new ProductVO(206, "Ice 페퍼민트", 3000,tmp));
+			proCategory.add(new ProductVO(207, "Hot 페퍼민트", 3000,tmp));
+			proCategory.add(new ProductVO(208, "Ice 캐모마일", 3000,tmp));
+			proCategory.add(new ProductVO(209, "Hot 캐모마일", 3000,tmp));
+			proCategory.add(new ProductVO(210, "Ice 홍차", 3000,tmp));
+			proCategory.add(new ProductVO(211, "Hot 홍차", 3000,tmp));
+			
+			tmp ++;
+			proCategory.add(new ProductVO(10, "Ice 밀크티", 3500,tmp));
+			proCategory.add(new ProductVO(11, "Hot 밀크티", 3500,tmp));
+			proCategory.add(new ProductVO(12, "Ice 초코라떼", 3500,tmp));
+			proCategory.add(new ProductVO(13, "Hot 초코라떼", 3500,tmp));
+			proCategory.add(new ProductVO(14, "Ice 말차라뗴", 3500,tmp));
+			proCategory.add(new ProductVO(15, "Hot 말차라떼", 3500,tmp));
+			proCategory.add(new ProductVO(16, "Ice 미숫가루", 3500,tmp));
+			proCategory.add(new ProductVO(17, "Hot 미숫가루", 3500,tmp));
+			proCategory.add(new ProductVO(18, "(Only)Ice 딸기라뗴", 3800,tmp));
+			proCategory.add(new ProductVO(19, "(Only)Ice 버블밀크티", 3900,tmp));
+			
+			tmp ++;
+			proCategory.add(new ProductVO(300, "허니브레드", 6500,tmp));
+			proCategory.add(new ProductVO(301, "마카롱", 2500,tmp));
+			proCategory.add(new ProductVO(302, "쿠키(초코/마카다미아)", 1500,tmp));
+			proCategory.add(new ProductVO(303, "햄치즈 샌드위치", 3800,tmp));
+			
+			tmp ++;
+			proCategory.add(new ProductVO(1, "+버블추가", 1000,tmp));
+			proCategory.add(new ProductVO(2, "+샷 추가", 700,tmp));
+			proCategory.add(new ProductVO(3, "+휘핑크림 추가", 500,tmp));
+			proCategory.add(new ProductVO(4, "+헤이즐넛 시럽 추가", 300,tmp));
+			
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// 입력값 범위 확인 
+	public int checkRange(int num) {
+		return checkRange(num, 0, 100);
+	}
+	public int checkRange(int num, int start, int end) {
+		if(num < start || num > end) {
+			throw new util.RangeException(start,end);
+		}
+		return num;
+	}
+	
+	private void save() {
+		 try(ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream("product1.ser"))) {
+			 ois.writeObject(proCategory);
+		 }catch(IOException e) {
+			 e.printStackTrace();
+		 }
+	}
+	
+	/**
+	 * 김민수  
+	 *
+	 * 음료별 카테고리 분류
+	 */
+	// 음료 카테고리별로 보여주기
+	@Override
+	public void showCategory(int input) {
+		for (int i = 0; i < getProCategory().size(); i++) {
+			if(input == getProCategory().get(i).getProCategory()) {
+				System.out.println(getProCategory().get(i));
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param 김민수 
+	 * 지정된 음료찾기
+	 */
+	public ProductVO findBy(int no) {
+		ProductVO product = null;
+		for(int i = 0; i < proCategory.size(); i++) {
+			if(proCategory.get(i).getProNum() == no) {
+				product = proCategory.get(i);
+				break;
+			}
+		}
+		//상품 코드에  해당하는 음료
+		return product;
+	}
+	
+	
+}

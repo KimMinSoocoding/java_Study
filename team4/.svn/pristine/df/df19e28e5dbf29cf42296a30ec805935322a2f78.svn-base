@@ -1,0 +1,192 @@
+package vo;
+//5. 관리자 아이디, 비밀번호, 이름 / 가입일시는 특별히 넣지 않겠다 이유는 프로그램
+// 생성과 동시에 같이 가지고 생성되는것이 관리자 이기 때문에,
+public class Administrator {
+	/**
+	 * @함준혁
+	 * 관리자 아이디
+	 */
+	private String id = "admin";
+	/**
+	 * @함준혁
+	 * 관리자 비밀번호
+	 */
+	private String pw = "1234";
+	/**
+	 * @함준혁
+	 * 관리자 이름
+	 */
+	private String name = "관리자";
+	/**
+	 * @함준혁
+	 * 총매출 
+	 */
+	private long sales;
+	/**
+	 * @함준혁
+	 * 커피매출
+	 */
+	private long cofsal;
+	/**
+	 * @함준혁
+	 * 티매출
+	 */
+	private long teasal;
+	/**
+	 * @함준혁
+	 * 라떼매출
+	 */
+	private long latsal;
+	/**
+	 * @함준혁
+	 * 디저트 매출
+	 */
+	private long dessal;
+	/**
+	 * @함준혁
+	 * 그외매출
+	 */
+	private long etcsal;
+	
+	
+	/**
+	 * @함준혁
+	 * 기본생성자
+	 */
+	public Administrator() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @author 함준혁
+	 * @param id 아이디
+	 * @param pw 패스워드
+	 * @param name 관리자이름
+	 * 
+	 */
+	public Administrator(String id, String pw, String name) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+	}
+	
+	public long getCofsal() {
+		return cofsal;
+	}
+
+	public void setCofsal(long cofsal) {
+		this.cofsal = cofsal;
+	}
+
+	public long getTeasal() {
+		return teasal;
+	}
+
+	public void setTeasal(long teasal) {
+		this.teasal = teasal;
+	}
+
+	public long getLatsal() {
+		return latsal;
+	}
+
+	public void setLatsal(long latsal) {
+		this.latsal = latsal;
+	}
+
+	public long getDessal() {
+		return dessal;
+	}
+
+	public void setDessal(long dessal) {
+		this.dessal = dessal;
+	}
+
+	public long getEtcsal() {
+		return etcsal;
+	}
+
+	public void setEtcsal(long etcsal) {
+		this.etcsal = etcsal;
+	}
+
+	/**
+	 * @함준혁
+	 * 매출게터	
+	 */
+	public long getSales() {
+		return sales;
+	}
+
+	/**
+	 * @함준혁
+	 * @param 매출 세터
+	 */
+	public void setSales(long sales) {
+		this.sales = sales;
+	}
+
+	/**
+	 *@함준혁
+	 * @return 아이디 게터
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @함준혁
+	 * @param 아이디 세터
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @함준혁
+	 *
+	 * @return 패스워드 게터
+	 */
+	public String getPw() {
+		return pw;
+	}
+
+	/**
+	 * @함준혁
+	 * @param pw 패스워드 세터
+	 */
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	/**
+	 * @함준혁
+	 * @return 관리자 이름 게터
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @함준혁
+	 * 
+	 * @param name 관리자 이름 세터
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @함준혁
+	 * toString
+	 * 아이디와 비밀번호 패스워드를 출력하는 투스트링
+	 */
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", pw=" + pw + ", name=" + name + "]";
+	}
+	
+	
+
+}

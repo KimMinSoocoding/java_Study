@@ -1,0 +1,176 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+
+import vo.ProductVO;
+
+
+
+
+public class ProductServiceImpl	implements ProductService {
+
+
+
+
+
+	Scanner scn = new Scanner(System.in);
+	
+	List<ProductVO> coffeeList = new ArrayList<>();
+	List<ProductVO> teaList = new ArrayList<>();
+	List<ProductVO> bereageList = new ArrayList<>();
+	List<ProductVO> dessertList = new ArrayList<>();
+	List<ProductVO> EtcList = new ArrayList<>();
+	
+	
+	{	
+		// 초기화 블럭에 음료 넣기
+		// 커피 Black
+		coffeeList.add(new ProductVO(100, "Ice 아메리카노", 2000));
+		coffeeList.add(new ProductVO(101, "Hot 아메리카노", 2000));
+		coffeeList.add(new ProductVO(102, "콜드브루", 2200));
+		coffeeList.add(new ProductVO(103, "아인슈페너", 3000));
+		
+		// 커피 White
+		coffeeList.add(new ProductVO(104, "Ice 카라멜 마끼야또", 3300));
+		coffeeList.add(new ProductVO(105, "Hot 카라멜 마끼야또", 3300));
+		coffeeList.add(new ProductVO(106, "Ice 바닐라 라떼", 3300));
+		coffeeList.add(new ProductVO(107, "Hot 바닐라 라떼", 3300));
+		coffeeList.add(new ProductVO(108, "Ice 카페모카", 3300));
+		coffeeList.add(new ProductVO(109, "Hot 카페모카", 3300));
+		coffeeList.add(new ProductVO(110, "Ice 연유라떼", 3500));
+		coffeeList.add(new ProductVO(111, "Hot 연유라떼", 3500));
+		
+		// 차 Tea
+		teaList.add(new ProductVO(200, "Ice 자몽티", 3500));
+		teaList.add(new ProductVO(201, "Hot 자몽티", 3500));
+		teaList.add(new ProductVO(202, "Ice 레몬티", 3500));
+		teaList.add(new ProductVO(203, "Hot 레몬티", 3500));
+		teaList.add(new ProductVO(204, "Ice 녹차", 3000));
+		teaList.add(new ProductVO(205, "Hot 녹차", 3000));
+		teaList.add(new ProductVO(206, "Ice 페퍼민트", 3000));
+		teaList.add(new ProductVO(207, "Hot 페퍼민트", 3000));
+		teaList.add(new ProductVO(208, "Ice 캐모마일", 3000));
+		teaList.add(new ProductVO(209, "Hot 캐모마일", 3000));
+		teaList.add(new ProductVO(210, "Ice 홍차", 3000));
+		teaList.add(new ProductVO(211, "Hot 홍차", 3000));
+		
+		// bereage 라떼음료
+		bereageList.add(new ProductVO(10, "Ice 밀크티", 3500));
+		bereageList.add(new ProductVO(11, "Hot 밀크티", 3500));
+		bereageList.add(new ProductVO(12, "Ice 초코라떼", 3500));
+		bereageList.add(new ProductVO(13, "Hot 초코라떼", 3500));
+		bereageList.add(new ProductVO(14, "Ice 말차라뗴", 3500));
+		bereageList.add(new ProductVO(15, "Hot 말차라떼", 3500));
+		bereageList.add(new ProductVO(16, "Ice 미숫가루", 3500));
+		bereageList.add(new ProductVO(17, "Hot 미숫가루", 3500));
+		bereageList.add(new ProductVO(18, "(Only)Ice 딸기라뗴", 3800));
+		bereageList.add(new ProductVO(19, "(Only)Ice 버블밀크티", 3900));
+		
+		// dessert 디저트
+		dessertList.add(new ProductVO(300, "허니브레드", 6500));
+		dessertList.add(new ProductVO(301, "마카롱", 2500));
+		dessertList.add(new ProductVO(302, "쿠키(초코/마카다미아)", 1500));
+		dessertList.add(new ProductVO(303, "햄치즈 샌드위치", 3800));
+		
+		// Etc 그외 추가메뉴
+		EtcList.add(new ProductVO(1, "+버블추가", 1000));
+		EtcList.add(new ProductVO(2, "+샷 추가", 700));
+		EtcList.add(new ProductVO(3, "+휘핑크림 추가", 500));
+		EtcList.add(new ProductVO(4, "+헤이즐넛 시럽 추가", 300));
+		
+	}
+	
+	// 입력값 범위 확인 
+	public int checkRange(int num) {
+		return checkRange(num, 0, 100);
+	}
+	public int checkRange(int num, int start, int end) {
+		if(num < start || num > end) {
+			throw new util.RangeException(start,end);
+		}
+		return num;
+	}
+	
+	// 구현되야할 것 : 상품 선택될때마다 상품금액 더하기 / 
+
+	
+	// 음료 카테고리별 보여주기
+	@Override
+	public void coffeeCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < coffeeList.size(); i++) {
+			System.out.println(coffeeList.get(i));
+			if(i%2 == 0 + 1 ) {
+				System.out.println();
+			}
+		}System.out.println(); 
+	}
+	
+	@Override
+	public void teaCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < teaList.size(); i++) {
+			System.out.println(teaList.get(i));
+			if(i%2 == 0 + 1 ) {
+				System.out.println();
+			}
+		}System.out.println();
+	}
+	
+	@Override
+	public void bereageCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < bereageList.size(); i++) {
+			System.out.println(bereageList.get(i));
+			if(i%2 == 0 + 1 ) {
+				System.out.println();
+			}
+		}System.out.println();
+	}
+	
+	@Override
+	public void dessertCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < dessertList.size(); i++) {
+			System.out.println(dessertList.get(i));
+			if(i%2 == 0 + 1 ) {
+				System.out.println();
+			}
+		}System.out.println();
+	}
+	
+	@Override
+	public void  ectCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < EtcList.size(); i++) {
+			System.out.println(EtcList.get(i));
+		}System.out.println();
+	}
+	
+	public ProductVO coffeefindBy() { // 음료가 저장되어 있는 곳 ProductVO 
+		int no = checkRange(util.Utils.nextInt("원하시는 음료의 주문코드를 입력해주세요"),100,111);
+		ProductVO coffeePro = null;
+		for(int i=0; i < coffeeList.size() ; i++) {
+			if(coffeeList.get(i).getProNum() == no) {
+				coffeePro = coffeeList.get(i);
+				break;
+			}
+		}
+		return coffeePro;
+	}
+
+	
+	
+	
+	
+	public static void main(String[] args) {
+		ProductServiceImpl pro = new ProductServiceImpl();
+		
+
+		
+	}
+
+}

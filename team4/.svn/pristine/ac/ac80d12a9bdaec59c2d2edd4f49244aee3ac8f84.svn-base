@@ -1,0 +1,30 @@
+package team4;
+
+public interface Orderable {
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06
+	 * 
+	 * 전화번호를 입력받는 함수
+	 */
+	void getTel();
+	
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06 
+	 * 
+	 * 상품 합계 금액 구하는 함수
+	 */
+	void sumPrice();
+	
+	
+	/**
+	 * @author 이지윤
+	 * @since 23/02/06
+	 * 
+	 * 구매한 상품에 따른 재고 차감 함수
+	 */
+	void minusStock();
+	
+}

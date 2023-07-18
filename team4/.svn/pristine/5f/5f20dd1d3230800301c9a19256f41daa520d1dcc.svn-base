@@ -1,0 +1,42 @@
+package team4;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CustomerServiceImpl implements CustomerService{
+	
+	// 회원 정보 저장
+	List<String> customers = new ArrayList<>();
+	
+	
+	
+	// 쿠폰 발행
+	int coupon = 0;
+	
+	@Override
+	public void addCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void useCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+//	실행 확인	
+//	public static void main(String[] args) {
+//		CustomerServiceImpl cus = new CustomerServiceImpl();
+//		cus.register();
+//	}
+		
+}
+	
+	
+	
+	
+

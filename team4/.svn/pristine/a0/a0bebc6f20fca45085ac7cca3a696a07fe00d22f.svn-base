@@ -1,0 +1,72 @@
+package service;
+/**
+ * @함준혁
+ * 관리자서비스
+ *  1. 매출 확인하기
+    2. 상품 등록하기
+    3. 재고 관리하기
+ */
+public interface AdministratorService {
+	
+	void adminRegis();
+	/**
+	 * @함준혁
+	 * find by sales
+	 * : 매출을 조회한다. (총매출)
+	 */
+	void findBySal();
+
+	/**
+	 * @함준혁
+	 * find by detailed sales
+	 * : 상세 매출을 조회한다. (상세매출)
+	 * ex) 음료매출, 디저트매출
+	 */
+	void findByDetSal();
+
+	/**
+	 * @함준혁 
+	 * product register
+	 * : 상품을 등록한다. 
+	 */
+	void register();
+
+	/**
+	 * @함준혁
+	 * remove
+	 * : 상품을 삭제한다.
+	 */
+	void remove();
+
+	/**
+	 * @함준혁
+	 * find by stock
+	 * : 재고를 조회한다. (총재고)
+	 */
+	void findBySto();
+
+//	/**
+//	 * @함준혁
+//	 * find by detailed stock
+//	 * : 재고를 상세 조회한다. (상세조회)
+//	 * ex) 원두갯수, 우유갯수, 시럽갯수 등등 상세조회
+//	 */
+//	void findByDetSto();
+
+	/**
+	 * @함준혁
+	 * stock order
+	 * : 재고를 주문한다.
+	 */
+	void StoOrd();
+	
+	/**
+	 * @함준혁
+	 * Memberlist
+	 * 회원들을 조회한다. 조회시, 아이디 = 전화번호, 쿠폰갯수
+	 */
+	void MemberList();
+
+	
+
+}

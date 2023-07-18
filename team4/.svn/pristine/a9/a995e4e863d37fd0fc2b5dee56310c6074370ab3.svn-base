@@ -1,0 +1,10 @@
+package team4; 
+
+public class Administratorimpl impl{
+	/**구현해야할 목록
+	매출
+	상품등록
+	재고관리
+	**/
+	
+}

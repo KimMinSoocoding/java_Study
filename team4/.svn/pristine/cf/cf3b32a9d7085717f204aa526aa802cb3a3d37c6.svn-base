@@ -1,0 +1,131 @@
+
+
+package service;
+
+import java.awt.Menu;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import main.KioskMain;
+import util.Utils;
+import vo.ProductVO;
+
+public class Cart {
+	
+	private static Cart cart = new Cart();
+	public static Cart getInstance() {
+		return cart;
+	}
+	private Cart() {}
+	
+	
+	List<ProductVO> pickList = new ArrayList<ProductVO>();
+	
+	
+	public List<ProductVO> getPickList() {
+		return pickList;
+	}
+
+	public void setPickList(List<ProductVO> pickList) {
+		this.pickList = pickList;
+	}
+
+	ProductService productService = ProductServiceImpl.getInstance();
+	OrderService orderService = OrderServiceImpl.getInstance();
+	
+	
+	//장바구니에 추가 시, 카테고리 선택을 다시 할지 바로 상품 코드를 입력 받을지 결정
+	//장바구니에서 음료추가를 눌렀을 때, 카테고리부터 다시 선택하도록 하는 기능
+	public boolean on = false;
+	
+	// 추가메뉴 
+	
+	public void showList() {
+		System.out.println(" === 장바구니 목록 ===");
+		pickList.forEach(System.out::println); // 음료리스트 보여주는 코드
+	}
+	
+	
+	// 장바구니 리스트
+	public void proList() {
+		System.out.println(" === 장바구니 목록 ===");
+		pickList.forEach(System.out::println); // 음료리스트 보여주는 코드
+	
+		int input = Utils.nextInt("1.음료추가  2.음료삭제  3.결제하기");
+		switch(input) {
+		case 1: 
+			on = true;
+			addProduct();
+			break;
+		case 2:
+			proDelete();
+			break;
+		case 3:
+			orderService.getTel();
+			break;
+		}
+	}
+	
+//	public static void main(String[] args) {
+//		OrderService orderService = OrderServiceImpl.getInstance();
+//		System.out.println(orderService);
+//		orderService.getTel();
+//		
+//	}
+	
+
+	// 장바구니에 추가 
+	public void addProduct() {
+		if(on == true) main.KioskMain.run();
+		else { 
+			int code = Utils.nextInt("주문할 메뉴의 상품 코드를 입력해주세요 > ");
+			for(int i = 0; i < productService.getProCategory().size(); i++) {
+				if(productService.getProCategory().get(i).getProNum() == code) {
+					pickList.add(productService.getProCategory().get(i));
+					System.out.println(productService.getProCategory().get(i).getProName() + " 담기 완료");
+				}
+			}
+		}
+
+	}
+	
+
+	//상품 삭제하기
+	public void proDelete() {
+		pickList.forEach(System.out::println);
+		if(pickList.size() == 0) {
+			System.out.println(" 삭제를 진행할 상품이 없습니다ㅠ");
+			System.out.println();
+			return;
+		}
+		System.out.println();
+        int input = Utils.nextInt("삭제할 메뉴의 상품코드를 입력해주세요 > ");
+        for (int i = 0; i < pickList.size(); i++) {
+            if(pickList.get(i).getProNum() == input){
+            	pickList.remove(i);
+                System.out.println("삭제되었습니다.");
+                break;
+            } 
+            else {
+            	System.out.println("일치하는 상품코드가 없습니다");
+            }
+        }
+    }
+
+	//상품 찾기
+	public ProductVO findBy(int no) {
+		ProductVO product = null;
+		for(int i = 0; i < pickList.size(); i++) {
+			if(pickList.get(i).getProNum() == no) {
+				product = pickList.get(i);
+				break;
+			}
+		}
+		return product;
+	}
+	@Override
+	public String toString() {
+		return "Cart [pickList=" + pickList + "]";
+	}
+}

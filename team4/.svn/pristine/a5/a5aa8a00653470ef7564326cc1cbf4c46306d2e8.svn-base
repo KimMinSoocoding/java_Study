@@ -1,0 +1,20 @@
+package team4;
+
+public class Product {
+	int proNum;
+	String proName;
+	int proPrice;
+	
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Product(int proNum, String proName, int proPrice) {
+		super();
+		this.proNum = proNum;
+		this.proName = proName;
+		this.proPrice = proPrice;
+	}
+	
+	
+}

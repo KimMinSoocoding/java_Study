@@ -1,0 +1,49 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import vo.ProductVO;
+
+// 주문코드를 입력받는다 : 주문코드는 어디에 있는가? 음료List에 있다 
+// 입력받은 음료의 proNum은 findby에서 찾아 add 한다 
+// add 될때마다 count ++ 
+// 
+
+public class Cart {
+	ProductVO pro;
+	int count;
+	int sum;
+	
+	
+	
+	public ProductVO getPro() {
+		return pro;
+	}
+	
+	public void setCount(int count) {
+		this.count=count;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
+	public void setSum(int sum) {
+		this.sum=sum;
+	}
+
+	public Cart(ProductVO pro, int count, int sum) {
+		super();
+		this.pro = pro;
+		this.count = count;
+		this.sum = sum;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [pro=" + pro + ", count=" + count + ", sum=" + sum + "]";
+	}
+	
+	
+}

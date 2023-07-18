@@ -1,0 +1,205 @@
+package service;
+
+import java.util.List;
+
+import main.KioskMain;
+import util.Utils;
+import vo.Administrator;
+import vo.ProductVO;
+import vo.Member;
+
+public class AdministratorServiceImpl implements AdministratorService {
+
+	private static AdministratorService administratorService = new AdministratorServiceImpl();
+	
+	public static AdministratorService getInstance() {
+		return administratorService;
+	}
+	
+	private AdministratorServiceImpl() {}
+
+	
+	OrderService orderService = OrderServiceImpl.getInstance();
+	ProductService productService = ProductServiceImpl.getInstance();
+	MemberService memberService = MemberServiceImpl.getInstance();
+
+	Administrator admin = new Administrator();
+
+//	public void adminRegis() {
+//		if(admin.getId() != null) {
+//			admin();
+//		}else {
+//			String ID = Utils.nextLine("관리자 아이디를 입력해주십시오.");
+//			String PW = Utils.nextLine("관리자 비밀번호를 입력해주십시오.");
+//			System.out.println("등록되었습니다.");
+//			admin();
+//		}
+//	}
+
+	@Override
+	public void admin() {
+		int pw = Utils.nextInt("관리자 비밀번호를 입력해 주십시오 :");
+		if (pw != admin.getPw()) {
+			System.out.println("비밀번호가 잘못되었습니다.");
+			admin();
+		}
+		
+	
+		int input = Utils.nextInt("1.매출조회   2.상품등록   3.상품삭제   4.재고조회   5.상세조회   6.회원관리 ");
+		switch (input) {
+		case 1:
+			checkTotalSales();
+			break;
+		case 2:
+			register();
+			break;
+		case 3:
+			remove();
+			break;
+		case 4:
+			checkStock();
+			break;
+		case 5:
+//			administratorService.StoOrd();
+			break;
+		case 6:
+			checkMembers();
+			break;
+		case 7:
+//			키오스크메인의싱글톤인스턴스.run();
+		default:
+			break;
+		}
+	}
+
+	//매출 조회하기
+	@Override
+	public void checkTotalSales() {
+		System.out.println("총 매출 : " + orderService.totalSales());
+		
+//		int input = Utils.nextInt("상세매출을 조회하시려면 1번, 이전으로 돌아가시려면 2번을 입력해주세요");
+//		switch (input) {
+//		case 1:
+//			administratorService.findByDetSal();
+//			break;
+//		case 2:
+//			admin();
+//		default:
+//			break;
+//		}
+
+	}
+	
+
+	/**
+	 * @함준혁 상세 매출 조회
+	 */
+//	public void findByDetSal() {
+//		// TODO Auto-generated method stub
+//		System.out.println("상세매출조회메서드입니다.");
+//		System.out.println("커피 매출 : " + admin.getCofsal());
+//		System.out.println("티 매출 : " + admin.getTeasal());
+//		System.out.println("라떼 매출 : " + admin.getLatsal());
+//		System.out.println("디저트 매출 : " + admin.getDessal());
+//	}
+
+	
+	
+	//등록하기
+	@Override
+	public void register() {
+
+		int no = Utils.nextInt("상품 카테고리 번호를 입력하세요 > 1.커피 2.티 3.라떼 4.디저트 5.etc");
+
+		int proNum = Utils.nextInt("상품번호를 입력하세요 >");
+		
+		for (int i = 0; i < productService.setCategory(no).size(); i++) {
+			if(proNum == productService.findBy(proNum).getProNum()) {
+				System.err.println("중복 상품번호가 존재합니다.");
+				break;
+			}
+			String proName = Utils.nextLine("상품명을 입력하세요 >");
+			int proPrice = Utils.nextInt("상품 가격을 입력하세요. >");
+			productService.setProCategory(new ProductVO(proNum, proName, proPrice, no));
+			
+		}
+		System.out.println("상품이 등록되었습니다.");
+		admin();
+
+	}
+
+	@Override
+	public void remove() {
+		
+		int no = Utils.nextInt("상품 카테고리 번호를 입력하세요 > 1.커피 2.티 3.라떼 4.디저트 5.etc");
+		int proNum = Utils.nextInt("상품 번호를 입력하세요 >");
+		
+		
+		for (int i = 0; i < productService.setCategory(no).size(); i++) {
+			if(proNum == productService.findBy(proNum).getProNum()) {
+				productService.setCategory(no).remove(productService.findBy(proNum));
+				System.out.println("상품이 삭제되었습니다.");
+			} else {
+				System.out.println("상품이 존재하지 않습니다.");
+				break;
+			}
+		}
+		admin();
+	}
+	
+	
+	//재고 확인하기
+	@Override
+	public void checkStock() {
+		int no = Utils.nextInt("상품 카테고리 번호를 입력하세요 > 1.커피   2.티   3.라떼   4.디저트   5.etc");
+		System.out.println(productService.setCategory(no));
+		
+
+	}
+
+//	@Override
+//	public void StoOrd() {
+//		System.out.println("재고를 주문하는 메서드입니다. 어떤 재고를 주문하시겠습니까?");
+//		// TODO Auto-generated method stub
+//
+//	}
+
+
+	
+	/**
+	 * @함준혁 숫자값 조회하여 상품번호 받는 메서드
+	 * @param no
+	 * @return 같으면 상품번호 리턴, 다르면 0 리턴
+	 */
+//	Administrator findby(int no) {
+//		for (int i = 0; i < 민수형싱글톤인스턴스.proCategory.size(); i++) {
+//			if (pr.proCategory.get(i).getProNum() == no) {
+//				return pr.proCategory.get(i).getProNum();
+//			}
+//		}
+//		return null;
+//	}
+
+	/**
+	 * @함준혁 회원관리. 회원조회, 회원삭제
+	 */
+	@Override
+	public void checkMembers() {
+		for(int i = 0; i < memberService.getMemberList().size(); i++) {
+			System.out.println(memberService.getMemberList());
+		}
+		
+
+//		int input = Utils.nextInt("");
+//		switch (input) {
+//		case 1: {	
+//
+//		}
+//		default:
+//			throw new IllegalArgumentException("Unexpected value: " + input);
+//		}
+
+	}
+
+	
+}

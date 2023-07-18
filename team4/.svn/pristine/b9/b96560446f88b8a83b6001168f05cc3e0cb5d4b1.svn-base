@@ -1,0 +1,10 @@
+package vo;
+
+public class Administrator {
+	private String pw;
+
+	public String getPw() {
+		return pw;
+	}
+	
+}	

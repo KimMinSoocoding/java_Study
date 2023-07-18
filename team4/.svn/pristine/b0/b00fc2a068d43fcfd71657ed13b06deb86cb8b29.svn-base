@@ -1,0 +1,17 @@
+package team4;
+
+public interface CustomerService {
+
+	/**
+	 * @author 박현민
+	 * @since 23/02/06
+	 */
+	
+	public void addCoupon(); // 쿠폰 적립
+	
+	public void useCoupon(); // 쿠폰 사용
+	
+	
+	
+	
+}

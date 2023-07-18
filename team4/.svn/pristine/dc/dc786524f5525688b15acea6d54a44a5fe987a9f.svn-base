@@ -1,0 +1,137 @@
+package service;
+
+import java.util.List;
+
+import util.Utils;
+import vo.Administrator;
+import vo.ProductVO;
+
+public class AdministratorServiceImpl implements AdministratorService {
+
+	private static AdministratorService administratorService = new AdministratorServiceImpl();
+
+	public static AdministratorService getInstance() {
+		return administratorService;
+	}
+
+	private AdministratorServiceImpl() {
+	}
+
+	OrderService orderService = OrderServiceImpl.getInstance();
+	ProductService productService = ProductServiceImpl.getInstance();
+	MemberService memberService = MemberServiceImpl.getInstance();
+	List<ProductVO> productVOs = productService.getProCategory();
+	Administrator admin = new Administrator();
+
+	/**
+	 * @함준혁 관리자 로그인 사전에 지정된 번호인 String값 1234와 일치했을 시 admin()메서드 호출 일치하지 않을 시
+	 *      비밀번호가잘못되었습니다 출력
+	 */
+	public void isAdmin() {
+		String pw = Utils.nextLine("비밀번호를 입력하시오");
+		if (pw == admin.getPw())
+			admin();
+		else
+			System.out.println("비밀번호가잘못되었습니다.");
+	}
+
+	@Override
+	public void admin() {
+		int input = Utils.nextInt("1.매출조회   2.상품등록   3.상품삭제   4.재고조회   5.회원조회   6.회원수정  ");
+		switch (input) {
+		case 1:
+			checkTotalSales();
+			break;
+		case 2:
+			register();
+			break;
+		case 3:
+			remove();
+			break;
+		case 4:
+			checkStock();
+			break;
+		case 5:
+			memberService.getMemberList().forEach(System.out::println);
+			break;
+		case 6:
+			edit();
+			break;
+		case 7:
+
+		default:
+			break;
+		}
+
+	}
+
+	/**
+	 * @함준혁 매출 조회를 하는 메서드 orderService에 저장되어있는 총 매출값을 출력
+	 */
+	public void checkTotalSales() {
+		System.out.println("총 매출 : " + orderService.totalSales());
+		admin();
+	}
+
+	/**
+	 * @함준혁 상품을 등록하는 메서드 1. 상품 카테고리를 입력 받아 카테고리 목록 출력 2. 상품번호 입력받아. productService의
+	 *      findby를 이용하여, 중복탐색 3. 중복시 " 이미 있는 상품입니다 " 비중복시 상품추가
+	 */
+	public void register() {
+		int no = Utils.nextInt("상품 카테고리 번호를 입력하세요 > 1.커피   2.티   3.라떼   4.디저트   5.etc");
+		productService.showCategory(no);
+		int proNum = Utils.nextInt("상품번호를 입력하세요 >");
+		if (productService.findBy(proNum) != null)
+			System.out.println("이미 있는 상품입니다.");
+		else {
+			String proName = Utils.nextLine("상품명을 입력하세요 >");
+			int proPrice = Utils.nextInt("상품 가격을 입력하세요. >");
+			productService.getProCategory().add(new ProductVO(proNum, proName, proPrice, no));
+			System.out.println("상품이 등록되었습니다.");
+			productService.save();
+		}
+	}
+
+	/**
+	 * @함준혁 상품을 삭제하는 메서드 1. 삭제하실 상품번호를 입력받는다. 2. productService에 있는 findBy를 사용하여
+	 *      중복여부 확인 3. 중복 시 상품삭제 4. 비중복 시 상품이 존재하지 않는다는 문구 출력
+	 */
+	public void remove() {
+		int proNum = Utils.nextInt("삭제하실 상품번호를 입력하시오");
+		if (productService.findBy(proNum) != null) {
+			productService.getProCategory().remove(productService.findBy(proNum));
+			System.out.println("상품이 삭제되었습니다.");
+			productService.save();
+			return;
+		} else
+			System.out.println("상품이 존재하지 않습니다.");
+	}
+
+	/**
+	 * @함준혁 총재고를 출력하는 메서드 재고부분은 아직 구현을 할지, 안할지에 대해서 고민이기때문에 아직 구현하지않았습니다.
+	 */
+	public void checkStock() {
+//		productService.getProCategory().forEach(System.out::println);
+//		admin();
+	}
+
+	/**
+	 * @함준혁 edit :현재 등록된 회원의 번호를 수정합니다.
+	 * 수정하실 회원의 번호를 입력받습니다.
+	 * 입력받아 meberService에 있는 findMember를 이용하여 전화번호값을 찾습니다.
+	 * 중복되는 번호가 없을 시에는 존재하지않는번호입니다 출력
+	 * 중복시에는 새로 바꿀 번호를 입력받아. 그 번호로 수정합니다.
+	 */
+	public void edit() {
+		String tel = Utils.nextLine("수정하실 회원의 번호를 입력해주세요");
+		if (memberService.findMember(tel) != null) {
+			String tel2 = Utils.nextLine("바꾸실 번호를 입력해주십시오.");
+			memberService.findMember(tel).setTel(tel2);
+			System.out.println("기존번호" + tel + " 에서" + tel2 + "로 수정이 완료되었습니다.");
+//			memberService.getMemberList().forEach(System.out::println);
+		} else {
+			System.out.println("존재하지않는번호입니다.");
+		}
+	}
+
+}

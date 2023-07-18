@@ -1,0 +1,27 @@
+package util;
+
+public class RangeException extends RuntimeException {
+	
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * 
+	 * 
+	 * 입력받은 범위값 유효성검사
+	 * 
+	 */
+	
+	private int start;
+	private int end;
+	private int code;
+	
+	public RangeException() {}
+
+	public RangeException(int start, int end) {
+		super(start + "과" + end + "사이의 값을 입력하세요");
+	}
+	public RangeException(int code) {
+		super(code +"는 유효하지 않는 코드입니다");
+	}
+	
+}

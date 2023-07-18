@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;태형이의 토익점수&apos;" deleteContents="false" description="Delete resource &apos;태형이의 토익점수&apos;" element1="/태형이의 토익점수" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1677674347488"/>
+</session>

@@ -1,0 +1,53 @@
+package main;
+
+import service.ProductServiceImpl;
+
+public class KioskMain {
+	
+	/**
+	 * @author 김민수 
+	 * @since 23/02/06
+	 * ProductServiceImpl 인스턴스생성 
+	 */
+	static ProductServiceImpl pro = new ProductServiceImpl();
+	
+	public static void main(String[] args) {
+		
+		/**
+		 * @author 김민수 
+		 * @since 23/02/06
+		 * 입력값 범위 유효성검사 pro.checkRange 
+		 */
+		//1. 커피   2. 차   3. Beverage   4. Dessert   -1. 관리자
+		int input = pro.checkRange(util.Utils.nextInt("메뉴 선택 > 1.커피  2.차  3.Beverage  4.Dessert  5.Etc  6.종료"),1,5);
+		switch(input) {
+		case -1:
+			//관리자 페이지
+			System.out.println("관리자페이지입니다");
+			break;
+		case 1:
+			pro.coffeeCategory();
+			break;
+		case 2:
+			pro.teaCategory();
+			break;
+		case 3:
+			pro.bereageCategory();
+			break;
+		case 4:
+			pro.dessertCategory();
+			break;
+		case 5:
+			pro.ectCategory();
+			break;
+		case 6:
+		
+			break;
+		default:
+			break;
+			
+		}
+	
+	}
+
+}

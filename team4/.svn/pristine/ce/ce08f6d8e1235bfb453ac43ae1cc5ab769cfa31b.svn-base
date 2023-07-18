@@ -1,0 +1,123 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+
+import vo.ProductVO;
+
+
+
+
+public class ProductServiceImpl	implements ProductService {
+
+	Scanner scn = new Scanner(System.in);
+	
+	// 입력값 범위 확인 
+	public int checkRange(int num) {
+		return checkRange(num, 0, 100);
+	}
+	public int checkRange(int num, int start, int end) {
+		if(num < start || num > end) {
+			throw new util.RangeException(start,end);
+		}
+		return num;
+	}
+	
+	// 구현되야할 것 : 상품 선택될때마다 상품금액 더하기 / 
+	
+	Product pp = new Product();
+	
+	// 음료 카테고리별 보여주기
+	@Override
+	public void drinkCategory(int no1, int no2) {
+		for(int i =0 ; i<pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() >= no1 && 
+			pp.proCategory.get(i).getProNum() <= no2) {
+				System.out.println(pp.proCategory.get(i));
+				if(i%2 == 0+1) {
+					System.out.println();
+				}
+			}
+
+		}
+	}
+	
+	// 추가옵션 카테고리별 보여주기
+	public void moreAddCategort(int no1, int no2) {
+		for(int i =0 ; i<pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() >= no1 && 
+			pp.proCategory.get(i).getProNum() <= no2) {
+				System.out.println(pp.proCategory.get(i));
+				if(i%2 == 0+1) {
+					System.out.println();
+				}
+			}
+
+		}
+	}
+	
+	// 
+	public void DessertCategort(int no1, int no2) {
+		for(int i =0 ; i<pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() >= no1 && 
+			pp.proCategory.get(i).getProNum() <= no2) {
+				System.out.println(pp.proCategory.get(i));
+				if(i%2 == 0+1) {
+					System.out.println();
+				}
+			}
+
+		}
+	}
+
+	
+	public ProductVO findBy() { // 음료
+		System.out.println();
+		int no = checkRange(util.Utils.nextInt("원하시는 음료의 주문코드를 입력해주세요"),10,299);
+		ProductVO proBy = null;
+		for(int i=0; i < pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() == no) {
+				proBy = pp.proCategory.get(i);
+				System.out.println();
+				System.out.println(proBy + "담기완료");
+				break;
+			}
+		}
+		return proBy;
+	}
+	
+	public ProductVO morefindBy() { // 추가옵션
+		int no = checkRange(util.Utils.nextInt("원하시는 추가옵션을 선택해주세요"),1,8);
+		ProductVO proBy = null;
+		for(int i=0; i < pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() == no) {
+				proBy = pp.proCategory.get(i);
+				System.out.println();
+				System.out.println(proBy + " 추가완료 ");
+				break;
+			}
+		}
+		return proBy;
+	}
+	public ProductVO DessertfindBy() { // 추가옵션
+		int no = checkRange(util.Utils.nextInt("원하시는 디저트를 선택해주세요"),300,315);
+		ProductVO proBy = null;
+		for(int i=0; i < pp.proCategory.size(); i++) {
+			if(pp.proCategory.get(i).getProNum() == no) {
+				proBy = pp.proCategory.get(i);
+				System.out.println();
+				System.out.println(proBy + " 추가완료 ");
+				break;
+			}
+		}
+		return proBy;
+	}
+	
+	/////////////////////////////////////////////////
+	// get instance / priavte static 
+	// public static 클래스service getInstance(){}
+	
+	// private 클래스 Impl
+}

@@ -1,0 +1,50 @@
+package vo;
+
+public class ProductVO {
+	private int proNum;
+	private String proName;
+	private int proPrice;
+	
+	
+	public ProductVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProductVO(int proNum, String proName, int proPrice) {
+		super();
+		this.proNum = proNum;
+		this.proName = proName;
+		this.proPrice = proPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "주문코드 : "+ proNum+ "  " + proName + "  금액=" + proPrice + "원";
+	}
+
+	public int getProNum() {
+		return proNum;
+	}
+
+	public void setProNum(int proNum) {
+		this.proNum = proNum;
+	}
+
+	public String getProName() {
+		return proName;
+	}
+
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+
+	public int getProPrice() {
+		return proPrice;
+	}
+
+	public void setProPrice(int proPrice) {
+		this.proPrice = proPrice;
+	}
+	
+	
+}

@@ -1,0 +1,121 @@
+package team4;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+
+public class ProductServiceImpl	implements ProductService {
+	
+	Scanner scn = new Scanner(System.in);
+	
+	List<Product> coffeeList = new ArrayList<>();
+	List<Product> teaList = new ArrayList<>();
+	List<Product> bereageList = new ArrayList<>();
+	List<Product> dessertList = new ArrayList<>();
+	List<Product> EtcList = new ArrayList<>();
+	
+	
+	{	
+		// 초기화 블럭에 음료 넣기
+		// 커피 Black
+		coffeeList.add(new Product(100, "Ice 아메리카노", 2000));
+		coffeeList.add(new Product(101, "Hot 아메리카노", 2000));
+		coffeeList.add(new Product(200, "콜드브루", 2200));
+		coffeeList.add(new Product(300, "아인슈페너", 3000));
+		
+		// 커피 White
+		coffeeList.add(new Product(400, "Ice 카라멜 마끼야또", 3300));
+		coffeeList.add(new Product(401, "Hot 카라멜 마끼야또", 3300));
+		coffeeList.add(new Product(500, "Ice 바닐라 라떼", 3300));
+		coffeeList.add(new Product(501, "Hot 바닐라 라떼", 3300));
+		coffeeList.add(new Product(600, "Ice 카페모카", 3300));
+		coffeeList.add(new Product(601, "Hot 카페모카", 3300));
+		coffeeList.add(new Product(700, "Ice 연유라떼", 3500));
+		coffeeList.add(new Product(701, "Hot 연유라떼", 3500));
+		
+		// 차 Tea
+		teaList.add(new Product(1000, "Ice 자몽티", 3500));
+		teaList.add(new Product(1001, "Hot 자몽티", 3500));
+		teaList.add(new Product(2000, "Ice 레몬티", 3500));
+		teaList.add(new Product(2001, "Hot 레몬티", 3500));
+		teaList.add(new Product(3000, "Ice 녹차", 3000));
+		teaList.add(new Product(3001, "Hot 녹차", 3000));
+		teaList.add(new Product(4000, "Ice 페퍼민트", 3000));
+		teaList.add(new Product(4001, "Hot 페퍼민트", 3000));
+		teaList.add(new Product(5000, "Ice 캐모마일", 3000));
+		teaList.add(new Product(5001, "Hot 캐모마일", 3000));
+		teaList.add(new Product(6000, "Ice 홍차", 3000));
+		teaList.add(new Product(6001, "Hot 홍차", 3000));
+		
+		// bereage 라떼음료
+		bereageList.add(new Product(10, "Ice 밀크티", 3500));
+		bereageList.add(new Product(11, "Hot 밀크티", 3500));
+		bereageList.add(new Product(20, "Ice 초코라떼", 3500));
+		bereageList.add(new Product(21, "Hot 초코라떼", 3500));
+		bereageList.add(new Product(30, "Ice 말차라뗴", 3500));
+		bereageList.add(new Product(31, "Hot 말차라떼", 3500));
+		bereageList.add(new Product(40, "Ice 미숫가루", 3500));
+		bereageList.add(new Product(41, "Hot 미숫가루", 3500));
+		bereageList.add(new Product(50, "(Only)Ice 딸기라뗴", 3800));
+		bereageList.add(new Product(51, "(Only)Ice 버블밀크티", 3900));
+		
+		// dessert 디저트
+		dessertList.add(new Product(999, "허니브레드", 6500));
+		dessertList.add(new Product(888, "마카롱", 2500));
+		dessertList.add(new Product(777, "쿠키(초코/마카다미아)", 1500));
+		dessertList.add(new Product(666, "햄치즈 샌드위치", 3800));
+		
+		// Etc 그외 추가메뉴
+		EtcList.add(new Product(1, "+ 버블추가", 1000));
+		EtcList.add(new Product(2, "+ 샷 추가", 700));
+		EtcList.add(new Product(3, "+ 휘핑크림 추가", 500));
+		EtcList.add(new Product(4, "+ 헤이즐넛 시럽 추가", 300));
+		
+	}
+	
+	// 입력값 범위 확인 
+	int checkRange(int num) {
+		return checkRange(num, 0, 100);
+	}
+	int checkRange(int num, int start, int end) {
+		if(num < start || num > end) {
+			throw new RangeException(start,end);
+		}
+		return num;
+	}
+	
+	// 구현되야할 것 : 상품 선택될때마다 상품금액 더하기 / 
+
+	@Override
+	public void coffeeCategory() {
+		System.out.println("== * 커피 Black & White * ==");
+		for(int i = 0; i < coffeeList.size(); i++) {
+			
+			System.out.println(coffeeList.get(i));
+		}
+		int no = checkRange(Utils.nextInt("원하시는 음료의 주문코드를 입력해주세요"),100,800);
+		
+	}
+	
+	@Override
+	public void teaCategory() {
+		
+	}
+	
+	@Override
+	public void beregeCategory() {
+
+	}
+	@Override
+	public void dessertCategory() {
+
+	}
+	@Override
+	public void etcCategory() {
+
+	}
+}
